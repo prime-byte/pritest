@@ -1,0 +1,387 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f5;
+  color: #333;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+}
+/* Header Styling */
+.header {
+  width: 100%;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Logo Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+.logo-container:hover {
+  transform: translateY(-5px);
+}
+/* Logo Image Styling */
+.logo-image {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+.logo-image:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+/* Logo Text Styling */
+.logo-text {
+  font-size: 2.5em;
+  color: #ffdd57;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: color 0.3s ease;
+}
+.logo-text:hover {
+  color: #ffcc33;
+}
+/* Main Content Styling */
+.main-content,
+.quiz-content {
+  max-width: 800px;
+  text-align: center;
+  padding: 100px 20px;
+}
+.main-content h2,
+.quiz-content h2 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+/* Difficulty Options Styling */
+.difficulty-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 50px 0;
+}
+/* General Button Styling */
+.difficulty-card {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.difficulty-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+/* Label Styling */
+.difficulty-label {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 1.2em;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+/* Background Images for Each Difficulty Level */
+.easy {
+  background-image: url('easy.jpg');
+}
+.medium {
+  background-image: url('medium.jpg');
+}
+.hard {
+  background-image: url('hard.jpg');
+}
+.extreme {
+  background-image: url('images/extreme.png');
+}
+/* Hover Effects for Buttons */
+.easy:hover {
+  box-shadow: 0 0 15px 5px #5cb85c;
+}
+.medium:hover {
+  box-shadow: 0 0 15px 5px #f0ad4e;
+}
+.hard:hover {
+  box-shadow: 0 0 15px 5px #d9534f;
+}
+.extreme:hover {
+  box-shadow: 0 0 15px 5px #ff3333;
+}
+/* Button Styles */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #45a049;
+}
+.start-button {
+  background-color: #ff5733;
+}
+.start-button:hover {
+  background-color: #e04b2a;
+}
+
+/* Footer Styling */
+.footer {
+  width: 100%;
+  background-color: #333;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  font-size: 1em;
+}
+.footer a {
+  color: #ff6600;
+  text-decoration: none;
+  margin: 0 5px;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+/* Popup Styling */
+.feedback-popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.feedback-popup.show {
+  opacity: 1;
+  pointer-events: all;
+}
+.feedback-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: scaleUp 0.3s ease;
+}
+@keyframes scaleUp {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #555;
+}
+/* Timer Circle Styling */
+.timer-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+/* Green, Yellow, and Red Colors */
+.timer-green {
+  background-color: #5cb85c; /* Green */
+}
+.timer-yellow {
+  background-color: #f0ad4e; /* Yellow */
+}
+.timer-red {
+  background-color: #d9534f; /* Red */
+}
+/* Blinking effect for critical time */
+.timer-blink {
+  animation: blink 0.5s infinite alternate;
+}
+@keyframes blink {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+/* Popup Styling */
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+/* Options List */
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.option {
+  background-color: #f7b344;
+  padding: 15px;
+  border: none;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.option:hover {
+  background-color: #e0a333;
+}
+/* Results Screen */
+.results-screen {
+  text-align: center;
+  padding: 40px;
+  display: none;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+.results-screen h2 {
+  font-size: 2em;
+  color: #4caf50;
+  margin-bottom: 20px;
+}
+.results-screen p {
+  font-size: 1.2em;
+  color: #333;
+}
+.retry-button,
+.exit-button {
+  background-color: #d9534f; /* Red color for exit */
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.exit-button:hover {
+  background-color: #c9302c;
+}
+
+/* Start Button Styling */
+.start-button {
+  padding: 10px 20px;
+  background-color: #ff5733;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.start-button:hover {
+  background-color: #e04b2a;
+}
+
+
+/* Coins Display */
+#earned-coins {
+  font-size: 1.5em;
+  color: #ffd700; /* Gold color for coins */
+  margin: 10px 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Ad Modal Styling */#ad-modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.7);
+display: none;
+align-items: center;
+justify-content: center;
+}
+
+#ad-container {
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+text-align: center;
+}
+
+.cta-button {
+padding: 10px 20px;
+background-color: #5cb85c;
+color: white;
+border: none;
+font-size: 16px;
+cursor: pointer;
+}
+
+.cta-button:hover {
+background-color: #4cae4c;
+}
+
+#continue-ad-button {
+padding: 10px 20px;
+background-color: #5bc0de;
+color: white;
+border: none;
+font-size: 16px;
+cursor: pointer;
+}
+
+#continue-ad-button:disabled {
+background-color: #aaa;
+}

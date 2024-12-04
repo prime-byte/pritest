@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo-container">
+      <img src="logo3.1png.png" alt="Quiz App Logo" class="logo-image">
+      <h1 class="logo-text">XAPOMIND</h1>
+    </div>
+  </header>
+  <main id="main-content" class="main-content">
+  <h2>Select Difficulty Level for Science Quizzes</h2>
+  <div class="difficulty-options">
+    <button class="difficulty-card easy" onclick="startQuiz('easy')">
+      <span class="difficulty-label">Easy</span>
+    </button>
+    <button class="difficulty-card medium" onclick="startQuiz('medium')">
+      <span class="difficulty-label">Medium</span>
+    </button>
+    <button class="difficulty-card hard" onclick="startQuiz('hard')">
+      <span class="difficulty-label">Hard</span>
+    </button>
+    <button class="difficulty-card extreme" onclick="startQuiz('extreme')">
+      <span class="difficulty-label">Extreme</span>
+    </button>
+  </div>
+  <button class="back-to-home" onclick="goToHomePage()">Back to Home</button>
+</main>
+
+  <!-- Quiz Content -->
+  <div id="quiz-content" class="quiz-content" style="display: none;">
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn" aria-label="Close popup" onclick="closePopup()">✖</span>
+        <h2>Level Instructions</h2>
+        <p>Answer quickly! The timer is set based on difficulty level.</p>
+        <button class="start-button" aria-label="Start the Quiz" onclick="startQuizContent()">Start Quiz</button>
+      </div>
+    </div>
+    <div class="question-container" role="region" aria-labelledby="question-text">
+      <h2 id="question-text"></h2>
+      <div id="options" class="option-list" role="list"></div>
+    </div>
+   <div class="timer-container">
+  <div id="timer-circle" class="timer-circle">
+    <p id="time-left">0s</p>
+  </div>
+</div>
+    <button id="exit-button" class="exit-button" onclick="exitQuiz()">Exit</button>
+
+  </div>
+  <!-- Results Screen -->
+  <div id="results-screen" class="results-screen" style="display: none;">
+  <h2>Quiz Ended!</h2>
+  <p>Total Questions: <span id="total-questions"></span></p>
+  <p>Questions Attempted: <span id="total-questions-attempted"></span></p>
+  <p>Correct Answers: <span id="correct-answers"></span></p>
+  <p>Wrong Answers: <span id="wrong-answers"></span></p>
+  <p><strong>Coins Earned:</strong> <span id="earned-coins"></span></p>
+  <button class="retry-button" onclick="retryQuiz()">Try Again</button>
+  <button class="back-button" onclick="goBack()">Back to Difficulty Selection</button>
+</div>
+ 
+ <!--ads modal--><!-- Ad Modal -->
+<div id="ad-modal" style="display: none;">
+  <div id="ad-container">
+    <!-- The button will be dynamically added here -->
+  </div>
+  <p id="ad-instruction">Click here to activate the continue button.</p>
+  <button id="continue-ad-button" disabled onclick="proceedAfterAd()">Continue</button>
+</div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2024 Supreme Quizzes. All rights reserved.</p>
+  <p>Contact us: support@supremequizzes.com</p>
+  <a href="terms.html">Terms & Conditions</a> | <a href="privacy.html">Privacy Policy</a> | <a href="#">Cookies Settings</a>
+</footer>
+  <script src="script.js"></script>
+</body>
+</html>
